@@ -1,0 +1,19 @@
+name: Run it
+
+# Runs every Python file changed in a pull request and prints what it outputs.
+# Reviewers: open the Checks tab, click "Run the changed files", read the output.
+on: pull_request
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Run the changed files
+        run: |
+          for f in $(git diff --name-only origin/${{ github.base_ref }}...HEAD -- '*.py'); do
+            echo "=== $f ==="
+            python3 "$f"
+          done
