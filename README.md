@@ -23,8 +23,8 @@ Swap roles at the end if you have time.
 
 1. Go to the **Pull requests** tab, then **New pull request**.
 2. Set **base: main** and **compare: team-N**.
-3. Title: `feat(TEAM-N): what it does` (example: `feat(TEAM-1): add average`).
-4. Answer the three questions in the description.
+3. Title: `feat(TEAM-N): what it does` (example: `feat(TEAM-1): add average`). The branch is already made for you (`team-N`).
+4. Answer **every question** in the description (Ticket, Context, Changes, How did you test it, Anything risky or unfinished, Before / After). Write real answers, not "ok".
 5. On the right, click **Reviewers** and pick your teammate. Click **Create pull request**.
 
 ## Step 2: Review it (Reviewer, 10 min)

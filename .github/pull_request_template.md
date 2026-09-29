@@ -1,8 +1,16 @@
-## What does this PR do?
+**Ticket:** 
 
+## Context
+What is the task, and why are we doing it? (1-2 sentences)
+
+## Changes
+What did you change? (a short list)
 
 ## How did you test it?
+What did you run, and what did you see?
 
+## Anything risky or unfinished?
+What are you unsure about? Any secrets or passwords? What did you NOT do?
 
-## Anything the reviewer should know?
-
+## Before / After
+Paste a screenshot or the program output.
