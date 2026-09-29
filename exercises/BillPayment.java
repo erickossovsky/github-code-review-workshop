@@ -21,8 +21,23 @@ public class BillPayment {
         return bill.id + " ($" + bill.amount + ", " + bill.status + ")";
     }
 
+    static boolean canPay(Bill bill) {
+        return bill.status.equals("PAID");
+    }
+
+    static String pay(Bill bill) {
+        if (!canPay(bill)) {
+            System.out.println("confirmation email sent to owner");
+            return "REJECTED: bill " + bill.id + " cannot be paid";
+        }
+        bill.status = "PAID";
+        System.out.println("confirmation email sent to owner");
+        return "PAID: bill " + bill.id + " ($" + bill.amount + ")";
+    }
+
     public static void main(String[] args) {
-        Bill bill = new Bill("B7", 45.0, "UNPAID");
-        System.out.println(describe(bill));
+        Bill unpaid = new Bill("B7", 45.0, "UNPAID");
+        System.out.println(pay(unpaid) + "   (expected PAID)");
+        System.out.println(pay(unpaid) + "   (expected REJECTED: it is already paid)");
     }
 }
