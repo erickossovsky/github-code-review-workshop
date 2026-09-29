@@ -2,14 +2,14 @@
 
 You will review a real pull request. 20 minutes. Same steps as in PetClinic, on a much smaller project.
 
-Eight pull requests are already open, one per team. Each one has a description written with the
+24 pull requests are already open, one per team. Each one has a description written with the
 PetClinic template, and a small Java change based on a real PetClinic ticket.
 Your job: **is this pull request good enough to merge?**
 
 ## Find your pull request
 
-Your team number is on the board. Open the **Pull requests** tab and find the one titled with your number
-(`team-1` is the branch of the first one, and so on).
+Your team number is on the board. Open [PULL_REQUESTS.md](PULL_REQUESTS.md) and click your link.
+Your branch is shown under the PR title (for example `team-7`). Sign in to GitHub first.
 
 ## Roles
 
@@ -38,13 +38,15 @@ Your team number is on the board. Open the **Pull requests** tab and find the on
    - if the fix is one line, use the **Add a suggestion** button (the ± icon)
 2. At least one comment must be about the **description** (something it says that the code does not do).
    Write it on the PR conversation, not on a line of code.
-3. Click **Review changes**, pick **Comment**, **Approve** or **Request changes**, and submit.
+3. Click **Review changes**, pick **Comment**, and start the text with your verdict:
+   `Verdict: APPROVE` or `Verdict: REQUEST CHANGES`, then one sentence why. Submit.
+   (GitHub only lets people with write access click Approve or Request changes, so we write the verdict in the comment.)
 
 ## Step 3: Reply (5 min)
 
-1. Author: answer every comment (even just "done").
-2. Fix it on the same branch: open the file, click the pencil icon, edit, and commit to `team-N`.
-3. Click **Re-request review**.
+1. Author: answer every comment on your PR, even just "agree, I would change it like this".
+2. Say which comment you would fix first, and what you would change.
+3. (You cannot push to the branch. We fix one live at the end.)
 
 ## Run it on your own computer (optional)
 

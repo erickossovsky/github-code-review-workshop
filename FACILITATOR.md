@@ -1,6 +1,6 @@
 # Facilitator guide (do not share with students)
 
-Eight pull requests are prepared, one per team (branches `team-1` to `team-8`). Each has a description written
+24 pull requests are prepared (branches `team-1` to `team-24`, PR #k = team k). There are 8 scenarios, each repeated 3 times: team k gets scenario ((k - 1) mod 8) + 1, so teams 1, 9, 17 all review the same scenario. Each has a description written
 with the PetClinic (CPC) template and a small Java change based on a real PetClinic ticket. Java 17, like PetClinic.
 Five descriptions are wrong on purpose: reviewers must check the description against the code.
 
@@ -15,10 +15,10 @@ Five descriptions are wrong on purpose: reviewers must check the description aga
 
 ## Setup checklist
 
-1. The repo is public. Reviewers can comment on any PR when signed in to GitHub.
-2. To let students click **Approve** or **Request changes** (not only Comment), add them as collaborators with **Write** access.
+1. The repo is public and `main` is protected (no force push, no deletion, a review is required). Students need no access setup: anyone signed in to GitHub can comment on a public PR.
+2. Students without write access can only leave **Comment** reviews (Approve and Request changes are disabled for them). The README tells them to write `Verdict: APPROVE` or `Verdict: REQUEST CHANGES` at the start of the review text. They also cannot push fixes: the author role only replies. Fix one PR live at the end to show suggested changes being committed.
 3. Settings, Actions: allow workflows. The **Run it** check runs on every PR and prints the program output.
-4. Do not merge any PR before class.
+4. Do not merge any PR before class. Share the link to `PULL_REQUESTS.md`, or show it on screen.
 
 ## Answer key
 
