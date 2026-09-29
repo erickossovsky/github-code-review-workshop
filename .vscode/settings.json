@@ -1,4 +1,6 @@
 {
   "editor.tabSize": 4,
-  "files.trimTrailingWhitespace": true
+  "files.trimTrailingWhitespace": true,
+  "files.autoSave": "afterDelay",
+  "java.configuration.updateBuildConfiguration": "automatic"
 }
