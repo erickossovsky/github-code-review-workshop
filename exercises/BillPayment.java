@@ -1,16 +1,28 @@
 /**
  * TICKET 2: BILL-CPC-1987
- * A bill can only be paid if its status is not PAID.
- * Example: canPay("UNPAID") should be true, canPay("PAID") should be false
+ * A bill that is already PAID must not be payable again.
+ * Paying a bill sets its status to PAID and sends one confirmation email.
  */
 public class BillPayment {
 
-    static boolean canPay(String status) {
-    return false; // TODO
-}
+    static class Bill {
+        final String id;
+        final double amount;
+        String status; // "PAID" or "UNPAID"
+
+        Bill(String id, double amount, String status) {
+            this.id = id;
+            this.amount = amount;
+            this.status = status;
+        }
+    }
+
+    static String describe(Bill bill) {
+        return bill.id + " ($" + bill.amount + ", " + bill.status + ")";
+    }
 
     public static void main(String[] args) {
-        System.out.println("canPay(UNPAID) = " + canPay("UNPAID") + "   (expected true)");
-    System.out.println("canPay(PAID)   = " + canPay("PAID") + "   (expected false)");
+        Bill bill = new Bill("B7", 45.0, "UNPAID");
+        System.out.println(describe(bill));
     }
 }
