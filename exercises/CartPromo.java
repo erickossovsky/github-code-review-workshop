@@ -4,7 +4,6 @@ import java.util.List;
 /**
  * TICKET 3: CART-CPC-1944
  * A promo code must lower the price in the cart by a percentage.
- * Promo codes only work on or before their last valid day.
  */
 public class CartPromo {
 
@@ -21,7 +20,7 @@ public class CartPromo {
     static double cartTotal(List<Item> items) {
         double total = 0;
         for (Item item : items) {
-            total += item.price;
+            total = total + item.price;
         }
         return total;
     }
