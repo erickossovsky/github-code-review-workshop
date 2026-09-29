@@ -41,8 +41,36 @@ public class BillReport {
         return total;
     }
 
+    static double averageBill(List<Bill> bills) {
+        double total = 0;
+        for (Bill bill : bills) {
+            total += bill.amount;
+        }
+        return total / (bills.size() + 1);
+    }
+
+    static List<Bill> overdueBills(List<Bill> bills, int today) {
+        List<Bill> overdue = new ArrayList<>();
+        for (Bill bill : bills) {
+            if (bill.dueDay < today) {
+                overdue.add(bill);
+            }
+        }
+        return overdue;
+    }
+
+    static String summary(List<Bill> bills, int today) {
+        return "owed $" + totalOwed(bills)
+            + ", average $" + averageBill(bills)
+            + ", overdue " + overdueBills(bills, today).size();
+    }
+
     public static void main(String[] args) {
         List<Bill> bills = sampleBills();
-        System.out.println("total owed = " + totalOwed(bills) + "   (expected 90.0)");
+        int today = 10;
+        System.out.println("total owed    = " + totalOwed(bills) + "   (expected 90.0)");
+        System.out.println("average bill  = " + averageBill(bills) + "   (expected 45.0)");
+        System.out.println("overdue count = " + overdueBills(bills, today).size() + "   (expected 2)");
+        System.out.println("summary       = " + summary(bills, today));
     }
 }
