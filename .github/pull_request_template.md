@@ -1,7 +1,7 @@
-**Ticket:** 
+**JIRA:** 
 
 ## Context
-What is the task, and why are we doing it? (1-2 sentences)
+What is the ticket about, and why are we doing this change? (1-2 sentences)
 
 ## Changes
 What did you change? (a short list)
