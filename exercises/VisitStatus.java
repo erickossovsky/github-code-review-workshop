@@ -27,7 +27,28 @@ public class VisitStatus {
         return visits;
     }
 
+    static String visitStatus(int visitDay, int today) {
+        return visitDay > today ? "UPCOMING" : "PAST";
+    }
+
+    static Visit nextVisit(List<Visit> visits, int today) {
+        Visit next = null;
+        for (Visit visit : visits) {
+            if (!visitStatus(visit.day, today).equals("UPCOMING")) {
+                continue;
+            }
+            next = visit;
+        }
+        return next;
+    }
+
     public static void main(String[] args) {
-        System.out.println(sampleVisits().size() + " visits loaded");
+        int today = 10;
+        for (Visit visit : sampleVisits()) {
+            System.out.println(visit.pet + " (day " + visit.day + ") = " + visitStatus(visit.day, today));
+        }
+        System.out.println("expected: Rex PAST, Luna UPCOMING, Milo UPCOMING, Coco UPCOMING");
+        Visit next = nextVisit(sampleVisits(), today);
+        System.out.println("next visit = " + (next == null ? "none" : next.pet) + "   (expected Luna)");
     }
 }
