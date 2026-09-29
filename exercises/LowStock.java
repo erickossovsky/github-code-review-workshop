@@ -27,7 +27,31 @@ public class LowStock {
         return products;
     }
 
+    static final int LOW_STOCK = 5;
+
+    static int countLowStock(List<Product> products) {
+        int count = 0;
+        for (Product product : products) {
+            if (product.quantity <= LOW_STOCK) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    static String restockReminder(List<Product> products) {
+        StringBuilder text = new StringBuilder("Restock: ");
+        for (Product product : products) {
+            if (product.quantity <= LOW_STOCK) {
+                text.append(product.name).append(", ");
+            }
+        }
+        return text.toString();
+    }
+
     public static void main(String[] args) {
-        System.out.println(sampleProducts().size() + " products loaded");
+        List<Product> products = sampleProducts();
+        System.out.println("low stock = " + countLowStock(products) + "   (expected 1)");
+        System.out.println(restockReminder(products));
     }
 }
