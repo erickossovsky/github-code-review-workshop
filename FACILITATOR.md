@@ -1,5 +1,7 @@
 # Facilitator guide (do not share with students)
 
+Every exercise is a tiny Java file based on a real PetClinic ticket. Java 17 is what PetClinic uses.
+
 ## Timing (20 min)
 
 | Min | What |
@@ -19,18 +21,22 @@
 
 ## Answer key
 
-| Team | File | What is planted | Best verdict | Model comment |
-|------|------|-----------------|--------------|---------------|
-| 1 | `average.py` | Divides by `len + 1`. Returns 3.0, expected 4.0. | Request changes | `blocking:` average([2, 4, 6]) returns 3.0, expected 4.0. Divide by len(numbers). |
-| 2 | `is_even.py` | Logic is inverted (`% 2 == 1`). | Request changes | `blocking:` is_even(4) returns False. The check is backwards. Use `% 2 == 0`. |
-| 3 | `letter_grade.py` | Boundary bug: `> 90` should be `>= 90`. Only shows when you run with 90. | Request changes | `blocking:` letter_grade(90) returns B, expected A. Use `>= 90`. |
-| 4 | `greeting.py` | Works. Only nits: unused import, commented-out debug line, misspelled variable `mesage`. | **Approve** with nits | `nit:` `os` is imported and never used. |
-| 5 | `password.py` | Works, but prints the password to the console. | Request changes | `blocking:` the function prints the password. Remove the print. |
-| 6 | `temperature.py` | Wrong formula (`* 9/5 - 32`). 0 gives -32.0, 100 gives 148.0. | Request changes | `blocking:` to_fahrenheit(0) returns -32.0, expected 32.0. The formula ends with `+ 32`. |
-| 7 | `cart_total.py` | Works, but a payment API key is hard-coded in the file. | Request changes | `blocking:` a secret key is committed. Remove it and load it from an environment variable. |
-| 8 | `vowels.py` | Only counts lowercase vowels. `Apple` gives 1, expected 2. | Request changes | `blocking:` count_vowels("Apple") returns 1, expected 2. Lowercase the text first. |
+| Team | File | Ticket | What is planted | Best verdict | Model comment |
+|------|------|--------|-----------------|--------------|---------------|
+| 1 | `BillAverage.java` | BILL-CPC-1988 | Divides by `length + 1`. Prints 15.0, expected 20.0. | Request changes | `blocking:` averageBill({10, 20, 30}) returns 15.0, expected 20.0. Every average shown to customers is wrong. Divide by `amounts.length`. |
+| 2 | `BillPayment.java` | BILL-CPC-1987 | The check is inverted (`equals("PAID")`). UNPAID bills cannot be paid, PAID ones can. | Request changes | `blocking:` canPay("PAID") returns true, so a paid bill can be paid again and the owner is charged twice. Return `!status.equals("PAID")`. |
+| 3 | `CartPromo.java` | CART-CPC-1944 | Integer division: `percentOff / 100` is 0, so the promo does nothing. Prints 50.0, expected 45.0. | Request changes | `blocking:` applyPromo(50.0, 10) returns 50.0, expected 45.0. Customers never get their discount. Use `percentOff / 100.0`. |
+| 4 | `OwnerWelcome.java` | CUST-CPC-1953 | It works. Only nits: unused `import java.util.List`, a commented-out debug line, misspelled variable `mesage`. | **Approve** with nits | `nit:` `java.util.List` is imported and never used. Remove it. |
+| 5 | `PasswordCheck.java` | AUTH-CPC-1973 | Works, but prints the password to the console. | Request changes | `blocking:` the method prints the password. Anyone reading the logs sees it. Delete the println. |
+| 6 | `VisitStatus.java` | VIST-CPC-1954 | Edge case: `>` should be `>=`. A visit today shows PAST. Only shows when you run with visitDay == today. | Request changes | `blocking:` visitStatus(10, 10) returns PAST, expected UPCOMING. Visits happening today look finished. Use `>=`. |
+| 7 | `CartTotal.java` | CART-CPC-1940 | Works, but a mailer API key is hard-coded in the file. | Request changes | `blocking:` a secret key (`MAILER_API_KEY`) is committed. Anyone with repo access can use it. Load it from an environment variable. |
+| 8 | `LowStock.java` | INVT-CPC-1996 | Edge case: `<= 5` should be `< 5`. Prints 3, expected 1. | Request changes | `blocking:` countLowStock({1, 5, 9, 5}) returns 3, expected 1. Products with exactly 5 are not low stock. Use `< 5`. |
+
+Suggested PR titles (PetClinic style) are in the branch commit messages, for example `bug(BILL-CPC-1987): only unpaid bills can be paid`.
 
 Team 4 is the "not everything is a blocker" team. Watch that they do not Request changes over nits.
+Teams 6 and 8 only fail on an edge value, so reviewers who only try the easy case will miss it.
+Teams 5 and 7 print correct results, so running the code is not enough: the problem is visible only by reading.
 
 ## Coaching questions
 
@@ -38,7 +44,8 @@ Team 4 is the "not everything is a blocker" team. Watch that they do not Request
 - "Could the author fix this without asking you a question?"
 - "Is this a nit or a blocker? What happens if it stays?"
 - "Find the maybe in your comment and delete it."
+- "Where is the impact? Who does this hurt?"
 
 ## Wrap-up (last 2 min)
 
-Ask two reviewers to read their best comment out loud. Ask the class: was it declarative? did it have a label?
+Ask two reviewers to read their best comment out loud. Ask the class: did it have a label? problem, impact, solution?
