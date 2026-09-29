@@ -34,7 +34,8 @@ Swap roles at the end if you have time.
    Does it match what the ticket expects?
 3. **Files changed** tab. Hover over a line, click the blue **+**, and leave at least **two comments**:
    - start each one with a label: `nit:` `suggestion:` `question:` `blocking:` `praise:`
-   - say what happened, not what might (no "maybe", "probably", "should we")
+   - say the **problem**, the **impact** (why it matters), and the **solution** (no "maybe", "probably", "should we")
+   - no empty flattery: "amazing, perfect!" is not a review
    - if the fix is one line, use the **Add a suggestion** button (the ± icon)
 4. Click **Review changes**, pick **Comment**, **Approve** or **Request changes**, and submit.
 
@@ -54,6 +55,8 @@ Swap roles at the end if you have time.
 | `blocking:` | it breaks something | yes, Request changes |
 | `praise:` | something done well | never |
 
-Good comment: **where + what happened + why + what to change.**
+Good comment: **problem + impact + solution.**
 
-> `blocking:` `average([2, 4, 6])` returns 3.0, expected 4.0. Divide by `len(numbers)`, not `len(numbers) + 1`.
+> `blocking:` `average([2, 4, 6])` returns 3.0, expected 4.0. (problem)
+> Every average the app shows is wrong. (impact)
+> Divide by `len(numbers)`, not `len(numbers) + 1`. (solution)
